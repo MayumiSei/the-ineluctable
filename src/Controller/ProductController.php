@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,10 @@ class ProductController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('products.html.twig');
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findAll();
+        return $this->render('products.html.twig', array(
+            'products' => $products
+        ));
     }
 
     /**
