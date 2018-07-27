@@ -21,7 +21,6 @@ class ProductAdmin extends AbstractAdmin {
         $formMapper->add('title', TextType::class);
         $formMapper->add('description', TextareaType::class);
         $formMapper->add('price', TextType::class);
-        $formMapper->add('sizes', TextType::class);
         $formMapper->add('materials', EntityType::class, [
             'class' => Material::class,
             'multiple' => true
@@ -51,7 +50,6 @@ class ProductAdmin extends AbstractAdmin {
         $listMapper->addIdentifier('title');
         $listMapper->add('description');
         $listMapper->add('price');
-        $listMapper->add('sizes');
         $listMapper->add('materials');
         $listMapper->add('category');
         $listMapper->add('collection');

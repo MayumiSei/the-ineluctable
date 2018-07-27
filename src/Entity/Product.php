@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 // enregistrer en BDD la table produit, déclarer à doctrine
@@ -20,17 +21,15 @@ class Product {
     private $id;
 
     /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Size", inversedBy="products")
-     * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_size")
-     */
-    private $sizes;
 
     /**
      * @ORM\Column(type="float")
@@ -48,7 +47,7 @@ class Product {
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Material", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="Material", inversedBy="products")
      * @ORM\JoinColumn(nullable=true)
      * @ORM\JoinTable(name="product_material")
      */
@@ -71,8 +70,22 @@ class Product {
      */
     private $gallery;
 
+    public function __construct() {
+        $this->materials = new ArrayCollection();
+        $this->createdAt = new \Datetime('now');
+    }
+
     public function getId() {
         return $this->id;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
     public function getCategory() {
@@ -82,15 +95,6 @@ class Product {
     public function setCategory($category) {
         $this->category = $category;
         $category->addProduct($this);
-        return $this;
-    }
-
-    public function getSizes() {
-        return $this->sizes;
-    }
-
-    public function setSize($sizes) {
-        $this->sizes = $sizes;
         return $this;
     }
 
@@ -130,8 +134,22 @@ class Product {
         return $this;
     }
 
+    public function addMaterial(Material $material) {
+        if(!$this->materials->contains($material)) {
+            $this->materials[] = $material;
+        }
+        return $this;
+    }
+
+    public function removeMaterial(Material $material) {
+        if($this->materials->contains($material)) {
+            $this->materials->removeElement($material);
+        }
+        return $this;
+    }
+
     public function getCollection() {
-        return $this->materials;
+        return $this->collection;
     }
 
     public function setCollection($collection) {
@@ -140,7 +158,7 @@ class Product {
     }
 
     public function getShape() {
-        return $this->materials;
+        return $this->shape;
     }
 
     public function setShape($shape) {
@@ -149,7 +167,7 @@ class Product {
     }
 
     public function getGallery() {
-        return $this->materials;
+        return $this->gallery;
     }
 
     public function setGallery($gallery) {
