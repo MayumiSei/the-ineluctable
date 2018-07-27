@@ -27,6 +27,14 @@ class Size {
      */
     private $products;
 
+    public function __toString() {
+        $string = '';
+        if($this->name)
+            $string = $this->name;
+
+        return $string;
+    }
+
     public function getId() {
         return $this->id;
     }

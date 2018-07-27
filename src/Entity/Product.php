@@ -25,8 +25,6 @@ class Product {
      */
     private $category;
 
-    private $img;
-
     /**
      * @ORM\ManyToMany(targetEntity="Size", inversedBy="products")
      * @ORM\JoinColumn(nullable=true)
@@ -37,8 +35,12 @@ class Product {
     /**
      * @ORM\Column(type="float")
      */
-
     private $price;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $title;
 
     /**
      * @ORM\Column(type="string")
@@ -52,7 +54,22 @@ class Product {
      */
     private $materials;
 
-    private $slides;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Collection", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $collection;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Shape", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $shape;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery")
+     */
+    private $gallery;
 
     public function getId() {
         return $this->id;
@@ -65,15 +82,6 @@ class Product {
     public function setCategory($category) {
         $this->category = $category;
         $category->addProduct($this);
-        return $this;
-    }
-
-    public function getImg() {
-        return $this->img;
-    }
-
-    public function setImg($img) {
-        $this->img = $img;
         return $this;
     }
 
@@ -95,6 +103,15 @@ class Product {
         return $this;
     }
 
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+        return $this;
+    }
+
     public function getDescription() {
         return $this->description;
     }
@@ -113,12 +130,30 @@ class Product {
         return $this;
     }
 
-    public function getSlides() {
-       return $this->slides;
+    public function getCollection() {
+        return $this->materials;
     }
 
-    public function setSlides($slides) {
-        $this->slides = $slides;
+    public function setCollection($collection) {
+        $this->collection = $collection;
+        return $this;
+    }
+
+    public function getShape() {
+        return $this->materials;
+    }
+
+    public function setShape($shape) {
+        $this->shape = $shape;
+        return $this;
+    }
+
+    public function getGallery() {
+        return $this->materials;
+    }
+
+    public function setGallery($gallery) {
+        $this->gallery = $gallery;
         return $this;
     }
 }

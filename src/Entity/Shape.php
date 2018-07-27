@@ -22,7 +22,18 @@ class Shape {
      */
     private $name;
 
-    // faire product
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Shape", mappedBy="shape", orphanRemoval=true)
+     */
+    private $products;
+
+    public function __toString() {
+        $string = '';
+        if($this->name)
+            $string = $this->name;
+
+        return $string;
+    }
 
     public function getId() {
         return $this->id;
@@ -34,6 +45,15 @@ class Shape {
 
     public function setName($name) {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getProducts() {
+        return $this->products;
+    }
+
+    public function setProducts($products) {
+        $this->products = $products;
         return $this;
     }
 }

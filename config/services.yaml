@@ -16,7 +16,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Application}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -31,12 +31,61 @@ services:
            class: App\Admin\TagAdmin
            arguments: [~, App\Entity\Tag, ~]
            tags:
-               - { name: sonata.admin, manager_type: orm, label: Tag, group: “Blog” }
+               - { name: sonata.admin, manager_type: orm, label: Tag, group: Blog }
            public: true
 
     admin.blog:
            class: App\Admin\BlogAdmin
            arguments: [~, App\Entity\Blog, ~]
            tags:
-               - { name: sonata.admin, manager_type: orm, label: Blog, group: “Blog” }
+               - { name: sonata.admin, manager_type: orm, label: Blog, group: Blog }
            public: true
+
+    admin.product:
+          class : App\Admin\ProductAdmin
+          arguments: [~, App\Entity\Product, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Product, group: Product }
+          public: true
+
+    admin.category:
+          class : App\Admin\CategoryAdmin
+          arguments: [~, App\Entity\Category, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Category, group: Product }
+          public: true
+
+    admin.collection:
+          class : App\Admin\CollectionAdmin
+          arguments: [~, App\Entity\Collection, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Collection, group: Product }
+          public: true
+
+    admin.material:
+          class : App\Admin\MaterialAdmin
+          arguments: [~, App\Entity\Material, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Material, group: Product }
+          public: true
+
+    admin.shape:
+          class : App\Admin\ShapeAdmin
+          arguments: [~, App\Entity\Shape, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Shape, group: Product }
+          public: true
+
+    admin.size:
+          class : App\Admin\SizeAdmin
+          arguments: [~, App\Entity\Size, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Size, group: Product }
+          public: true
+
+    admin.slide:
+          class : App\Admin\SlideAdmin
+          arguments: [~, App\Entity\Slide, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Slide, group: Slide }
+          public: true

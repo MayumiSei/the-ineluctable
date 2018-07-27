@@ -21,6 +21,7 @@ class BlogAdmin extends AbstractAdmin {
             'class' => Tag::class,
             'multiple' => true
         ]);
+        $formMapper->add('media', ModelListType::class);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

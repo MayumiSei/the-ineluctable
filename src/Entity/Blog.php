@@ -35,12 +35,16 @@ class Blog {
     private $createdAt;
 
     /**
-     *
-     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="blog")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="blogs")
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="blog_tag")
+     * @ORM\JoinTable(name="blog_tags")
      */
     private $tags;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    protected $media;
 
     public function __construct() {
         $this->createdAt = new \Datetime("now");
@@ -98,6 +102,15 @@ class Blog {
         if($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
+        return $this;
+    }
+
+    public function getMedia() {
+        return $this->media;
+    }
+
+    public function setMedia($media) {
+        $this->media = $media;
         return $this;
     }
 }

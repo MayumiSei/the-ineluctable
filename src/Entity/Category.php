@@ -39,6 +39,14 @@ class Category {
         $this->products = new ArrayCollection(); // tableau special de doctrine, collection, pas vraiment tableau
     }
 
+    public function __toString() {
+        $string = '';
+        if($this->name)
+            $string = $this->name;
+
+        return $string;
+    }
+
     public function getId() {
         return $this->id;
     }

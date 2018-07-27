@@ -34,7 +34,11 @@ class Tag {
     }
 
     public function __toString() {
-        return "tag";
+        $string = '';
+        if($this->name)
+            $string = $this->name;
+
+        return $string;
     }
 
     public function getId() {

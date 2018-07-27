@@ -26,10 +26,17 @@ class Collection {
     private $media;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="collections")
+     * @ORM\OneToMany(targetEntity="App\Entity\Collection", mappedBy="collection", orphanRemoval=true)
      */
     private $products;
 
+    public function __toString() {
+        $string = '';
+        if($this->name)
+            $string = $this->name;
+
+        return $string;
+    }
 
     public function getId() {
         return $this->id;
