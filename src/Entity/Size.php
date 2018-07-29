@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="material")
+ * @ORM\Table(name="size")
  */
-class Material {
+class Size {
 
     /**
      * @ORM\Id
@@ -23,7 +23,7 @@ class Material {
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="materials")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="sizes")
      */
     private $products;
 

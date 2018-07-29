@@ -25,13 +25,13 @@ class ProductController extends Controller
      */
     public function showAction(Request $request)
     {
-        //$product = $this->getDoctrine()->getManager()->getRepository(Product::class)->find($request->get('id'));
-        //$products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy(array('collection' => $product->getCollection()));
+        $product = $this->getDoctrine()->getManager()->getRepository(Product::class)->find($request->get('id'));
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy(array('collection' => $product->getCollection()));
 
         // replace this example code with whatever you need
         return $this->render('product-detail.html.twig', array(
-            //'product' => $product,
-            //'products' => $products
+            'product' => $product,
+            'products' => $products
         ));
     }
 }

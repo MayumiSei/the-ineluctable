@@ -66,12 +66,20 @@ class Product {
     private $shape;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Size", inversedBy="products")
+     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinTable(name="product_size")
+     */
+    private $sizes;
+
+    /**
      * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery")
      */
     private $gallery;
 
     public function __construct() {
         $this->materials = new ArrayCollection();
+        $this->sizes = new ArrayCollection();
         $this->createdAt = new \Datetime('now');
     }
 
@@ -163,6 +171,29 @@ class Product {
 
     public function setShape($shape) {
         $this->shape = $shape;
+        return $this;
+    }
+
+    public function getSizes() {
+        return $this->sizes;
+    }
+
+    public function setSizes($sizes) {
+        $this->sizes = $sizes;
+        return $this;
+    }
+
+    public function addSize(Size $size) {
+        if(!$this->sizes->contains($size)) {
+            $this->sizes[] = $size;
+        }
+        return $this;
+    }
+
+    public function removeSize(Size $size) {
+        if($this->sizes->contains($size)) {
+            $this->sizes->removeElement($size);
+        }
         return $this;
     }
 
