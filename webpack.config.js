@@ -30,6 +30,7 @@ Encore
 
     .addStyleEntry('css/app', './assets/css/app.scss')
     .addStyleEntry('css/blog', './assets/css/_blog.scss')
+    .addStyleEntry('css/home', './assets/css/_home.scss')
 
     .createSharedEntry('vendor', [
         'jquery',
