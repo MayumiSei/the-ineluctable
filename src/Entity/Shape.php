@@ -23,7 +23,7 @@ class Shape {
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Shape", mappedBy="shape", orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="shapes")
      */
     private $products;
 
@@ -54,6 +54,20 @@ class Shape {
 
     public function setProducts($products) {
         $this->products = $products;
+        return $this;
+    }
+
+    public function addProduct(Product $product) {
+        if(!$this->products->contains($product)) {
+            $this->products[] = $product;
+        }
+        return $this;
+    }
+
+    public function removeProduct(Product $product) {
+        if($this->products->contains($product)) {
+            $this->products->removeElement($product);
+        }
         return $this;
     }
 }

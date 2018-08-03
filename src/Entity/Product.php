@@ -42,7 +42,7 @@ class Product {
     private $title;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $description;
 
@@ -60,10 +60,11 @@ class Product {
     private $collection;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Shape", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="Shape", inversedBy="products")
+     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinTable(name="product_shape")
      */
-    private $shape;
+    private $shapes;
 
     /**
      * @ORM\ManyToMany(targetEntity="Size", inversedBy="products")
@@ -79,6 +80,7 @@ class Product {
 
     public function __construct() {
         $this->materials = new ArrayCollection();
+        $this->shapes = new ArrayCollection();
         $this->sizes = new ArrayCollection();
         $this->createdAt = new \Datetime('now');
     }
@@ -166,11 +168,25 @@ class Product {
     }
 
     public function getShape() {
-        return $this->shape;
+        return $this->shapes;
     }
 
-    public function setShape($shape) {
-        $this->shape = $shape;
+    public function setShape($shapes) {
+        $this->shapes = $shapes;
+        return $this;
+    }
+
+    public function addShape(Shape $shape) {
+        if(!$this->shapes->contains($shape)) {
+            $this->shapes[] = $shape;
+        }
+        return $this;
+    }
+
+    public function removeShape(Shape $shape) {
+        if($this->shapes->contains($shape)) {
+            $this->shapes->removeElement($shape);
+        }
         return $this;
     }
 
