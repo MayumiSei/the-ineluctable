@@ -167,11 +167,11 @@ class Product {
         return $this;
     }
 
-    public function getShape() {
+    public function getShapes() {
         return $this->shapes;
     }
 
-    public function setShape($shapes) {
+    public function setShapes($shapes) {
         $this->shapes = $shapes;
         return $this;
     }

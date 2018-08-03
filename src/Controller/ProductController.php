@@ -28,10 +28,15 @@ class ProductController extends Controller
         $product = $this->getDoctrine()->getManager()->getRepository(Product::class)->find($request->get('id'));
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy(array('collection' => $product->getCollection()));
 
+        $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
+            ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
+        $latestProducts = $qb->getQuery()->getResult();
+
         // replace this example code with whatever you need
         return $this->render('product-detail.html.twig', array(
             'product' => $product,
-            'products' => $products
+            'products' => $products,
+            'latestProducts' => $latestProducts
         ));
     }
 }
