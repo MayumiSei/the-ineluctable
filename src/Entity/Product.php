@@ -85,6 +85,14 @@ class Product {
         $this->createdAt = new \Datetime('now');
     }
 
+    public function __toString() {
+        $string = '';
+        if($this->title)
+            $string = $this->title;
+
+        return $string;
+    }
+
     public function getId() {
         return $this->id;
     }
