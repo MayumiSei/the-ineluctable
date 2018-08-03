@@ -27,7 +27,7 @@
                     </h4>
 
                     <p class="stext-117 cl6">
-                        {{ blog.content }}
+                        {{ blog.content|length > 300 ? blog.content|slice(0, 300) ~ ' ...' : blog.content|raw }}
                     </p>
 
                     <div class="flex-w flex-sb-m p-t-18">
