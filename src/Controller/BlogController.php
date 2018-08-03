@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Entity\Tag;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -46,10 +47,15 @@ class BlogController extends Controller
             throw $this->createNotFoundException("Page not found");
         }
 
+        $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
+            ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
+        $latestProducts = $qb->getQuery()->getResult();
+
         return $this->render('blog.html.twig', array(
             'blogs' => $blogs,
             'tags' => $tags,
             'pager' => $pagerfanta,
+            'latestProducts' => $latestProducts
         ));
     }
 
@@ -60,10 +66,14 @@ class BlogController extends Controller
     {
         $blog = $this->getDoctrine()->getManager()->getRepository(Blog::class)->find($request->get('id'));
         $tags = $this->getDoctrine()->getManager()->getRepository(Tag::class)->findAll();
+        $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
+            ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
+        $latestProducts = $qb->getQuery()->getResult();
 
         return $this->render('blog-detail.html.twig', array(
             'blog' => $blog,
             'tags' => $tags,
+            'latestProducts' => $latestProducts
         ));
     }
 }
