@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed77d770-1579-4993-8dd5-6f3a14f17766" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Admin/SlideAdmin.php" afterPath="$PROJECT_DIR$/src/Admin/SlideAdmin.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" afterPath="$PROJECT_DIR$/src/Entity/Product.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Slide.php" afterPath="$PROJECT_DIR$/src/Entity/Slide.php" />
       <change beforePath="$PROJECT_DIR$/templates/home.html.twig" afterPath="$PROJECT_DIR$/templates/home.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/product-detail.html.twig" afterPath="$PROJECT_DIR$/templates/product-detail.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,14 +24,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="249" column="28" lean-forward="false" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="28" />
-              <folding>
-                <element signature="e#6743#6804#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="286">
+              <caret line="226" column="104" lean-forward="false" selection-start-line="226" selection-start-column="104" selection-end-line="226" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product-detail.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/product-detail.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="217" column="54" lean-forward="false" selection-start-line="217" selection-start-column="54" selection-end-line="217" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -175,12 +180,12 @@
         <option value="$PROJECT_DIR$/src/Controller/BlogController.php" />
         <option value="$PROJECT_DIR$/templates/layout-blog.html.twig" />
         <option value="$PROJECT_DIR$/templates/products.html.twig" />
-        <option value="$PROJECT_DIR$/templates/product-detail.html.twig" />
         <option value="$PROJECT_DIR$/src/Admin/SlideAdmin.php" />
         <option value="$PROJECT_DIR$/src/Entity/Slide.php" />
         <option value="$PROJECT_DIR$/src/Entity/Product.php" />
         <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/templates/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/product-detail.html.twig" />
       </list>
     </option>
   </component>
@@ -347,12 +352,12 @@
       <workItem from="1529763041351" duration="12049000" />
       <workItem from="1531662323267" duration="79668000" />
       <workItem from="1532716114542" duration="5429000" />
-      <workItem from="1533297424600" duration="5744000" />
+      <workItem from="1533297424600" duration="5957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151807000" />
+    <option name="totallyTimeSpent" value="152020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -668,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/product-detail.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="203" column="195" lean-forward="false" selection-start-line="203" selection-start-column="195" selection-end-line="203" selection-end-column="195" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -778,11 +775,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="249" column="28" lean-forward="false" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="28" />
-          <folding>
-            <element signature="e#6743#6804#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="226" column="104" lean-forward="false" selection-start-line="226" selection-start-column="104" selection-end-line="226" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/product-detail.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="217" column="54" lean-forward="false" selection-start-line="217" selection-start-column="54" selection-end-line="217" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
