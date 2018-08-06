@@ -32,6 +32,12 @@ class Product {
     private $category;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="float")
      */
     private $price;
@@ -113,6 +119,16 @@ class Product {
     public function setCategory($category) {
         $this->category = $category;
         $category->addProduct($this);
+        return $this;
+    }
+
+    public function getType() {
+        return $this->type;
+    }
+
+    public function setType($type) {
+        $this->type = $type;
+        $type->addProduct($this);
         return $this;
     }
 

@@ -7,6 +7,7 @@ use App\Entity\Material;
 use App\Entity\Category;
 use App\Entity\Shape;
 use App\Entity\Size;
+use App\Entity\Type;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -24,7 +25,7 @@ class ProductAdmin extends AbstractAdmin {
         $formMapper->add('price', TextType::class);
         $formMapper->add('sizes', EntityType::class, [
             'class' => Size::class,
-            'multiple' => false,
+            'multiple' => true,
             'required' => false
         ]);
         $formMapper->add('materials', EntityType::class, [
@@ -37,6 +38,10 @@ class ProductAdmin extends AbstractAdmin {
         ]);
         $formMapper->add('collection', EntityType::class, [
             'class' => Collection::class,
+            'multiple' => false
+        ]);
+        $formMapper->add('type', EntityType::class, [
+            'class' => Type::class,
             'multiple' => false
         ]);
         $formMapper->add('shapes', EntityType::class, [
@@ -60,6 +65,7 @@ class ProductAdmin extends AbstractAdmin {
         $listMapper->add('sizes');
         $listMapper->add('materials');
         $listMapper->add('category');
+        $listMapper->add('type');
         $listMapper->add('collection');
         $listMapper->add('shapes');
         $listMapper->add('createdAt');
