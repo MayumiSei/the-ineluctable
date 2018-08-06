@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Collection;
 use App\Entity\Slide;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,11 +24,17 @@ class HomeController extends Controller
         $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('b')->from(Blog::class, 'b')
             ->orderBy('b.createdAt', 'DESC')->setMaxResults('3');
         $blogs = $qb->getQuery()->getResult();
+
+        $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('c')->from(Collection::class, 'c')
+            ->orderBy('c.createdAt', 'DESC')->setMaxResults('3');
+        $collections = $qb->getQuery()->getResult();
+
         $slides = $this->getDoctrine()->getManager()->getRepository(Slide::class)->findAll();
         return $this->render('home.html.twig', array(
             'products' => $products,
             'blogs' => $blogs,
-            'slides' => $slides
+            'slides' => $slides,
+            'collections' => $collections
         ));
     }
 }

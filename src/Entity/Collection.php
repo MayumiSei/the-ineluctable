@@ -22,13 +22,24 @@ class Collection {
      */
     private $name;
 
-    // on met quoi comme ORM ?
-    private $media;
+    /**
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media")
+     */
+    protected $media;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Collection", mappedBy="collection", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="collection", orphanRemoval=true)
      */
     private $products;
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    public function __construct() {
+        $this->createdAt = new \Datetime('now');
+    }
 
     public function __toString() {
         $string = '';
@@ -66,6 +77,15 @@ class Collection {
 
     public function setProducts($products) {
         $this->products = $products;
+        return $this;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
         return $this;
     }
 }
