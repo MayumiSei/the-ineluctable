@@ -95,6 +95,7 @@ class Product {
         $this->materials = new ArrayCollection();
         $this->shapes = new ArrayCollection();
         $this->sizes = new ArrayCollection();
+        $this->colors = new ArrayCollection();
         $this->createdAt = new \Datetime('now');
     }
 

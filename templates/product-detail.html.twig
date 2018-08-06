@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('build/css/product.css') }}" rel="stylesheet">
+{% endblock %}
+
 {%  block body %}
     <!-- breadcrumb -->
     <div class="container">
@@ -35,7 +39,9 @@
                                         <div class="item-slick3" data-thumb="{% path img.media, 'small' %}">
                                             <div class="wrap-pic-w pos-relative">
                                                 <img src="{% path img.media, 'big' %}" alt="{{ product.title }}">
-
+                                                {% if product.state|length %}
+                                                    <span>{{ product.state }}</span>
+                                                {% endif %}
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{% path img.media, 'big' %}">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
@@ -116,6 +122,26 @@
                                                 <option value="null">Choose an option</option>
                                                 {% for material in product.materials %}
                                                     <option value="{{ material.id }}">{{ material.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if product.colors|length %}
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Color
+                                    </div>
+
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2" name="time">
+                                                <option value="null">Choose an option</option>
+                                                {% for color in product.colors %}
+                                                    <option value="{{ color.id }}">{{ color.name }}</option>
                                                 {% endfor %}
                                             </select>
                                             <div class="dropDownSelect2"></div>

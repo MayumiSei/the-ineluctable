@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Entity\Collection;
+use App\Entity\Color;
 use App\Entity\Material;
 use App\Entity\Category;
 use App\Entity\Shape;
@@ -40,6 +41,10 @@ class ProductAdmin extends AbstractAdmin {
         $formMapper->add('type', EntityType::class, [
             'class' => Type::class,
         ]);
+        $formMapper->add('colors', EntityType::class, [
+            'class' => Color::class,
+            'required' => false
+        ]);
         $formMapper->add('state', EntityType::class, [
             'class' => State::class,
             'required' => false
@@ -64,6 +69,7 @@ class ProductAdmin extends AbstractAdmin {
         $listMapper->add('price');
         $listMapper->add('sizes');
         $listMapper->add('materials');
+        $listMapper->add('colors');
         $listMapper->add('type');
         $listMapper->add('state');
         $listMapper->add('collection');
