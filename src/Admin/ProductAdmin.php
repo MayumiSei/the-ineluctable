@@ -39,7 +39,7 @@ class ProductAdmin extends AbstractAdmin {
             'class' => Collection::class,
             'multiple' => false
         ]);
-        $formMapper->add('shape', EntityType::class, [
+        $formMapper->add('shapes', EntityType::class, [
             'class' => Shape::class,
             'multiple' => true,
             'required' => false
@@ -61,7 +61,7 @@ class ProductAdmin extends AbstractAdmin {
         $listMapper->add('materials');
         $listMapper->add('category');
         $listMapper->add('collection');
-        $listMapper->add('shape');
+        $listMapper->add('shapes');
         $listMapper->add('createdAt');
     }
 }
