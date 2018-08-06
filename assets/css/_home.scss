@@ -12,3 +12,15 @@
   max-height: 450px;
   object-fit: cover;
 }
+
+.block2-pic {
+  span {
+    position: absolute;
+    background: black;
+    z-index: 8000;
+    top: 0;
+    padding: 10px;
+    font-family: Poppins-Medium;
+    color: white;
+  }
+}
