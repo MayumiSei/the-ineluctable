@@ -31,9 +31,9 @@ class Category {
 
     // connexion one to many entre category et product
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Type", mappedBy="category", orphanRemoval=true)
      */
-    private $products;
+    private $types;
 
     public function __construct() { // dès qu'on créé une catégorie, un tableau se créé
         $this->products = new ArrayCollection(); // tableau special de doctrine, collection, pas vraiment tableau
@@ -89,6 +89,15 @@ class Category {
         if($this->products->contains($product)) {
             $this->products->removeElement($product);
         }
+        return $this;
+    }
+
+    public function getTypes() {
+        return $this->types;
+    }
+
+    public function setTypes($types) {
+        $this->types = $types;
         return $this;
     }
 }

@@ -26,12 +26,6 @@ class Product {
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -116,16 +110,6 @@ class Product {
 
     public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
-        return $this;
-    }
-
-    public function getCategory() {
-        return $this->category;
-    }
-
-    public function setCategory($category) {
-        $this->category = $category;
-        $category->addProduct($this);
         return $this;
     }
 

@@ -24,12 +24,16 @@ class Type {
      */
     private $name;
 
-
-    // connexion one to many entre category et product
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="type", orphanRemoval=true)
      */
     private $products;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="type")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function __construct() {
         $this->products = new ArrayCollection();
@@ -76,6 +80,15 @@ class Type {
         if($this->products->contains($product)) {
             $this->products->removeElement($product);
         }
+        return $this;
+    }
+
+    public function getCategory() {
+        return $this->category;
+    }
+
+    public function setCategory($category) {
+        $this->category = $category;
         return $this;
     }
 }
