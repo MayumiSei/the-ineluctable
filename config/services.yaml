@@ -69,6 +69,13 @@ services:
               - { name: sonata.admin, manager_type: orm, label: Material, group: Product }
           public: true
 
+    admin.color:
+          class : App\Admin\ColorAdmin
+          arguments: [~, App\Entity\Color, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Color, group: Product }
+          public: true
+
     admin.shape:
           class : App\Admin\ShapeAdmin
           arguments: [~, App\Entity\Shape, ~]

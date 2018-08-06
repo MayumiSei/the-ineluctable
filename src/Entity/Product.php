@@ -80,6 +80,13 @@ class Product {
     private $sizes;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Color", inversedBy="products")
+     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinTable(name="product_color")
+     */
+    private $colors;
+
+    /**
      * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery")
      */
     private $gallery;
@@ -210,6 +217,29 @@ class Product {
     public function removeShape(Shape $shape) {
         if($this->shapes->contains($shape)) {
             $this->shapes->removeElement($shape);
+        }
+        return $this;
+    }
+
+    public function getColors() {
+        return $this->colors;
+    }
+
+    public function setColors($colors) {
+        $this->colors = $colors;
+        return $this;
+    }
+
+    public function addColor(Color $color) {
+        if(!$this->colors->contains($color)) {
+            $this->colors[] = $color;
+        }
+        return $this;
+    }
+
+    public function removeColor(Color $color) {
+        if($this->colors->contains($color)) {
+            $this->colors->removeElement($color);
         }
         return $this;
     }
