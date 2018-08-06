@@ -85,6 +85,12 @@ class Product {
      */
     private $gallery;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\State", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $state;
+
     public function __construct() {
         $this->materials = new ArrayCollection();
         $this->shapes = new ArrayCollection();
@@ -119,7 +125,6 @@ class Product {
 
     public function setType($type) {
         $this->type = $type;
-        $type->addProduct($this);
         return $this;
     }
 
@@ -257,6 +262,15 @@ class Product {
 
     public function setGallery($gallery) {
         $this->gallery = $gallery;
+        return $this;
+    }
+
+    public function getState() {
+        return $this->state;
+    }
+
+    public function setState($state) {
+        $this->state = $state;
         return $this;
     }
 }

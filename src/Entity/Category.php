@@ -29,7 +29,6 @@ class Category {
      */
     private $img;
 
-    // connexion one to many entre category et product
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Type", mappedBy="category", orphanRemoval=true)
      */
