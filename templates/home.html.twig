@@ -226,25 +226,30 @@
 				{% for slide in slides %}
 					<div class="item-slick1" style="background-image: url({% path slide.media, 'big' %}); background-size: cover;">
 						<div class="container h-full">
-							<div class="flex-col-l-m h-full p-t-100 p-b-30">
-								<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-									<span class="ltext-202 cl2 respon2">
-										{{ slide.product }}
-									</span>
-								</div>
+							<a href="{{ path('product-detail', {id: slide.product.id}) }}" class="block1-txt blockshop-txt s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3 shop-now-slide">
+								<div class="flex-col-l-m h-full p-t-100 p-b-30">
+									<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+										<span class="ltext-202 cl2 respon2">
+											{{ slide.product }}
+										</span>
+									</div>
 
-								<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-									<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-										{{ slide.title }}
-									</h2>
-								</div>
+									<div class="relative">
+										<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+											<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
+												{{ slide.title }}
+											</h2>
+										</div>
 
-								<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-									<a href="{{ path('product-detail', {id: slide.product.id}) }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-										Shop Now
-									</a>
+
+										<div class="block1-txt-child2 blockshop-txt-child2 p-b-4 trans-05" data-appear="zoomIn" data-delay="1600">
+											<div class="block1-link stext-101 cl0 trans-09">
+												<span class="shop-now">Shop Now</span>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 				{% endfor %}

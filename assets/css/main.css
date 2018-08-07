@@ -2004,6 +2004,10 @@ input.num-product::-webkit-inner-spin-button {
   transform: scaleX(0);
 }
 
+.blockshop-txt-child2 {
+  border-bottom: none;
+}
+
 .block1-link {
   -webkit-transform: translateY(250%);
   -moz-transform: translateY(250%);
@@ -2015,6 +2019,9 @@ input.num-product::-webkit-inner-spin-button {
 /*---------------------------------------------*/
 .block1-txt:hover {
   background-color: rgba(103,117,214,0.8);
+}
+.blockshop-txt:hover {
+  background-color: rgba(103,117,214,0.0);
 }
 
 .block1-txt:hover .block1-txt-child2 {
