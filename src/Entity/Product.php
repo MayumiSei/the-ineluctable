@@ -87,7 +87,7 @@ class Product {
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\State", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $state;
 
