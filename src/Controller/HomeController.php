@@ -31,18 +31,26 @@ class HomeController extends Controller
             ->orderBy('c.createdAt', 'DESC')->setMaxResults('3');
         $collections = $qb->getQuery()->getResult();
 
-        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
-
-        $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
-
         $slides = $this->getDoctrine()->getManager()->getRepository(Slide::class)->findAll();
         return $this->render('home.html.twig', array(
             'products' => $products,
             'blogs' => $blogs,
             'collections' => $collections,
-            'categories' => $categories,
-            'types' => $types,
             'slides' => $slides,
+        ));
+    }
+
+    /**
+     * @Route("/header", name="header")
+     */
+    public function menuAction(Request $request) {
+        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
+
+        $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
+
+        return $this->render('header.html.twig', array(
+            'categories' => $categories,
+            'types' => $types
         ));
     }
 }
