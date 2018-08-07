@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('build/css/home.css') }}" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
     <body class="animsition">
@@ -21,12 +22,26 @@
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
-                                <li class="active-menu">
+                                <li>
                                     <a href="{{ path('homepage') }}">Home</a>
                                 </li>
 
-                                <li>
+                                <li class="active-menu">
                                     <a href="{{ path('products') }}">Shop</a>
+                                    <div class="sub-menu">
+                                        {% for category in categories %}
+                                            <div class="float-left submenu-desktop">
+                                                <p>{{ category.name }}</p>
+                                                {% if category.types|length %}
+                                                    <ul>
+                                                        {% for type in category.types %}
+                                                            <li>{{ type.name }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
                                 </li>
 
                                 <li>

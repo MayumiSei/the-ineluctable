@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Collection;
 use App\Entity\Slide;
+use App\Entity\Type;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,12 +31,18 @@ class HomeController extends Controller
             ->orderBy('c.createdAt', 'DESC')->setMaxResults('3');
         $collections = $qb->getQuery()->getResult();
 
+        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
+
+        $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
+
         $slides = $this->getDoctrine()->getManager()->getRepository(Slide::class)->findAll();
         return $this->render('home.html.twig', array(
             'products' => $products,
             'blogs' => $blogs,
+            'collections' => $collections,
+            'categories' => $categories,
+            'types' => $types,
             'slides' => $slides,
-            'collections' => $collections
         ));
     }
 }

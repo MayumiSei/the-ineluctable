@@ -42,7 +42,6 @@ class ProductController extends Controller
         $shapes = $this->getDoctrine()->getManager()->getRepository(Shape::class)->findAll();
         $colors = $this->getDoctrine()->getManager()->getRepository(Color::class)->findAll();
         $sizes = $this->getDoctrine()->getManager()->getRepository(Size::class)->findAll();
-        dump($request->request);
 
         return $this->render('products.html.twig', array(
             'products' => $products,
