@@ -7,6 +7,7 @@ use App\Entity\Material;
 use App\Entity\Product;
 use App\Entity\Shape;
 use App\Entity\Size;
+use App\Entity\Type;
 use Doctrine\ORM\QueryBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,19 +37,35 @@ class ProductController extends Controller
         {
             $qb->join('p.sizes', 'si')->andWhere('si.id = :size')->setParameter('size', $request->request->get('size'));
         }
+        if($request->get('type'))
+        {
+            $qb->andWhere('p.type = :type')->setParameter('type', $request->get('type'));
+        }
+
+        // A faire
+        if($request->get('category'))
+        {
+            $qb->join('p.type', 't')->join('t.category' , 'c')->where('c.id = :category')->setParameter('category', $request->get('category'));
+        }
+        if($request->get('collection'))
+        {
+            $qb->andWhere('p.collection = :collection')->setParameter('collection', $request->get('collection'));
+        }
 
         $products = $qb->getQuery()->getResult();
         $materials = $this->getDoctrine()->getManager()->getRepository(Material::class)->findAll();
         $shapes = $this->getDoctrine()->getManager()->getRepository(Shape::class)->findAll();
         $colors = $this->getDoctrine()->getManager()->getRepository(Color::class)->findAll();
         $sizes = $this->getDoctrine()->getManager()->getRepository(Size::class)->findAll();
+        $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
 
         return $this->render('products.html.twig', array(
             'products' => $products,
             'materials' => $materials,
             'shapes' => $shapes,
             'colors' => $colors,
-            'sizes' => $sizes
+            'sizes' => $sizes,
+            'types' => $types
         ));
     }
 
