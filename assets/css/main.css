@@ -387,7 +387,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   position: absolute;
   top:0;
   left:100%;
-  min-width: 400px;
+  min-width: 505px;
   background-color: #fff;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
