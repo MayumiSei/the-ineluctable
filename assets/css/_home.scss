@@ -64,3 +64,31 @@
     }
   }
 }
+
+.submenu-mobile {
+  background-color: white;
+  color: black;
+  padding: 20px;
+
+  .h-40 {
+    height: 40px;
+  }
+
+  span {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    font-family: Poppins-Medium;
+    font-size: 16px;
+  }
+
+  ul {
+    padding-top: 10px;
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #333;
+
+    li {
+      padding: 5px 0;
+    }
+  }
+}

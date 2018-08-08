@@ -114,6 +114,22 @@
 
             <li>
                 <a href="{{ path('products') }}">Shop</a>
+                <div class="submenu-mobile">
+                    {% for category in categories %}
+                        <div>
+                            <div class="h-40">
+                                <span>{{ category.name }}</span>
+                            </div>
+                            {% if category.types|length %}
+                                <ul>
+                                    {% for type in category.types %}
+                                        <li>{{ type.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
             </li>
 
             <li>
