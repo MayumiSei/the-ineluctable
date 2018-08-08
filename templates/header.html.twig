@@ -12,11 +12,11 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li>
+                        <li {% if 'homepage' in route %} class="active-menu" {% endif %}>
                             <a href="{{ path('homepage') }}">Home</a>
                         </li>
 
-                        <li class="active-menu">
+                        <li {% if 'products' in route %} class="active-menu" {% endif %}>
                             <a href="{{ path('products') }}">Shop</a>
                             <div class="sub-menu">
                                 {% for category in categories %}
@@ -38,15 +38,15 @@
                             </div>
                         </li>
 
-                        <li>
+                        <li {% if 'blog' in route %} class="active-menu" {% endif %}>
                             <a href="{{ path('blog') }}">Blog</a>
                         </li>
 
-                        <li>
+                        <li {% if 'about' in route %} class="active-menu" {% endif %}>
                             <a href="{{ path('about') }}">About</a>
                         </li>
 
-                        <li>
+                        <li {% if 'contact' in route %} class="active-menu" {% endif %}>
                             <a href="{{ path('contact') }}">Contact</a>
                         </li>
                     </ul>

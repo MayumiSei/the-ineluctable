@@ -8,7 +8,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body class="animsition">
-    {{  render(controller('App\\Controller\\HomeController::menuAction')) }}
+    {{  render(controller('App\\Controller\\HomeController::menuAction', {'route': app.request.get('_route')} )) }}
         {% block body %}{% endblock %}
         <footer class="bg3 p-t-75 p-b-32">
             <div class="container">

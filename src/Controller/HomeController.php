@@ -36,7 +36,7 @@ class HomeController extends Controller
             'products' => $products,
             'blogs' => $blogs,
             'collections' => $collections,
-            'slides' => $slides,
+            'slides' => $slides
         ));
     }
 
@@ -50,7 +50,8 @@ class HomeController extends Controller
 
         return $this->render('header.html.twig', array(
             'categories' => $categories,
-            'types' => $types
+            'types' => $types,
+            'route' => $request->get('route')
         ));
     }
 }
