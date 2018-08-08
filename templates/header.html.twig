@@ -21,7 +21,9 @@
                             <div class="sub-menu">
                                 {% for category in categories %}
                                     <div class="float-left submenu-desktop">
-                                        <p>{{ category.name }}</p>
+                                        <a href="{{ path('products', {category: category.id}) }}">
+                                            <p>{{ category.name }}</p>
+                                        </a>
                                         {% if category.types|length %}
                                             <ul>
                                                 {% for type in category.types %}
