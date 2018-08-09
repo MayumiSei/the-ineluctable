@@ -52,5 +52,12 @@
 .blog-img {
   height: 500px;
   object-fit: cover;
+}
 
+.blog-img {
+  p {
+    img {
+      display: none;
+    }
+  }
 }

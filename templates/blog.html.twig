@@ -19,27 +19,20 @@
                     </div>
                 </a>
 
-                <div class="p-t-32">
+                <div class="p-t-32 blog-img">
                     <h4 class="p-b-15">
                         <a href="{{ path('blog-detail', {id : blog.id}) }}" class="ltext-108 cl2 hov-cl1 trans-04">
                             {{ blog.title }}
                         </a>
                     </h4>
 
-                    <p class="stext-117 cl6">sdsss
-                        {{ blog.content|length > 300 ? blog.content|slice(0, 300)|raw ~ ' ...' : blog.content|raw }}
-                    </p>
-
-####
-                    {% if blog.content|length > 300 %}
-                        {{ blog.content|slice(0, 300)|raw ~ ' ...' }}
-                    {% else %}
-                        {{ blog.content|raw }}
-                    {% endif %}
-                    ####
+                    <p class="stext-117 cl6">
+                        {% if blog.content|length > 300 %}
+                            {{ blog.content|slice(0, 300)|raw ~ ' ...' }}
+                        {% else %}
+                            {{ blog.content|raw }}
+                        {% endif %}
                     <p>
-
-                        {{ blog.content | slice(0, 300) | raw }}---</p>
 
                     <div class="flex-w flex-sb-m p-t-18">
                         <span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
