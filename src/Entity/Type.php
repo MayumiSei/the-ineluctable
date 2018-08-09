@@ -30,7 +30,7 @@ class Type {
     private $products;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="type")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="types")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;

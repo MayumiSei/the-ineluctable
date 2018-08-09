@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Blog;
 use App\Entity\Product;
+use App\Entity\Tag;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,10 +24,13 @@ class SearchController extends Controller
             ->setParameter('title', '%' . $request->get('search') .'%');
         $blogs = $qb->getQuery()->getResult();
 
+        $tags = $this->getDoctrine()->getManager()->getRepository(Tag::class)->findAll();
+
         return $this->render('search.html.twig', array(
             'products' => $products,
             'blogs' => $blogs,
-            'search' => $request->get('search')
+            'search' => $request->get('search'),
+            'tags' => $tags
         ));
     }
 }
