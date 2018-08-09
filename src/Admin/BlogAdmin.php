@@ -16,7 +16,10 @@ class BlogAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('title', TextType::class);
-        $formMapper->add('content', TextareaType::class);
+        $formMapper->add('content', TextareaType::class, array(
+            'required' => false,
+            'label' => 'Content *'
+        ));
         $formMapper->add('tags', EntityType::class, [
             'class' => Tag::class,
             'multiple' => true

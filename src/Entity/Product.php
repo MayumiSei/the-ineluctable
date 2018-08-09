@@ -5,14 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-// enregistrer en BDD la table produit, déclarer à doctrine
 /**
  * @ORM\Entity
  * @ORM\Table(name="product")
  */
 class Product {
 
-    // afin que ça entre en BDD
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

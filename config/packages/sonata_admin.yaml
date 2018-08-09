@@ -1,5 +1,11 @@
 sonata_admin:
-    title: 'Sonata Admin'
+    # title: 'The Ineluctable'
+    title_logo: images/logo-01.png
+    templates:
+      edit: 'Admin/edit.html.twig'
+    assets:
+      extra_stylesheets: ['build/js/skins/lightgray/skin.min.css', 'build/js/skins/lightgray/content.min.css', 'build/css/admin.css']
+      extra_javascripts: ['build/manifest.js', 'build/vendor.js', 'build/js/jquery-tinymce.js', 'build/js/tinymce.js', 'build/js/themes/modern/theme.js', 'build/js/plugins/image/plugin.js', 'build/js/plugins/lists/plugin.js', 'build/js/plugins/textcolor/plugin.js', 'build/js/plugins/link/plugin.js', 'build/js/app.js']
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
