@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 {% if products|length or blogs|length %}
-                    <p class="search-results">We have founds {{ products|length + products|length }} results in product.</p>
+                    <p class="search-results">We have founds {{ products|length + blogs|length }} results in product.</p>
                 {% else %}
                     <p class="search-results">No Results ...</p>
                 {% endif %}
