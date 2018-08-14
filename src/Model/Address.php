@@ -5,7 +5,7 @@ namespace App\Model;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\MappedSuperclass
  * @ORM\Table(name="address")
  */
 class Address {
@@ -13,42 +13,42 @@ class Address {
     /**
      * @ORM\Column(type="string")
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $street;
+    protected $street;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $streetAdd;
+    protected $streetAdd;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $city;
+    protected $city;
 
     /**
-     * @ORM\Column(type="int")
+     * @ORM\Column(type="integer")
      */
-    private $zipCode;
+    protected $zipCode;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $country;
+    protected $country;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $state;
+    protected $state;
 
     public function __construct() {
 
@@ -124,5 +124,9 @@ class Address {
     public function setState($state) {
         $this->state = $state;
         return $this;
+    }
+
+    public function getFullName() {
+        return $this->firstName . ' ' . $this->lastName;
     }
 }

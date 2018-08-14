@@ -17,7 +17,8 @@ class ProfileFormType extends AbstractType
             'data_class' => AddressDelivery::class
         ));
         $builder->add('addressBilling', AddressFormType::class, array(
-            'data_class' => AddressBilling::class
+            'data_class' => AddressBilling::class,
+            'required' => false
         ));
     }
 
