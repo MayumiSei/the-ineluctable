@@ -104,3 +104,11 @@
     color: #007bff;
   }
 }
+
+.img-hide {
+  p {
+    img {
+      display: none;
+    }
+  }
+}
