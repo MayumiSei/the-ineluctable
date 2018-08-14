@@ -110,3 +110,8 @@ services:
           tags:
               - { name: sonata.admin, manager_type: orm, label: State, group: Product }
           public: true
+
+    app.form.profile:
+        class: App\Form\Type\ProfileFormType
+        tags:
+            - { name: form.type, alias: app_user_profile }

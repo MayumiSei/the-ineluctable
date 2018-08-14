@@ -2,8 +2,60 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
+    <a href="{{ path('fos_user_profile_edit') }}">Edit Profile</a>
     <div class="fos_user_user_show">
+        <br>
         <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
         <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <br>
+        <div class="row">
+            {% if user.addressDelivery %}
+                <div class="col-12 col-md-6">
+                    <h4>Delivery Address</h4>
+                    <p>{{ user.fullName }}</p>
+                    <p>{{ user.addressDelivery.street }}</p>
+                    <p>{{ user.addressDelivery.streetAdd }}</p>
+                    <p>{{ user.addressDelivery.city }} / {{ user.addressDelivery.zipcode }}</p>
+                    <p>{{ user.addressDelivery.state }}</p>
+                    <p>{{ user.addressDelivery.country }}</p>
+                </div>
+            {% endif %}
+            {% if user.addressBilling %}
+                <div class="col-12 col-md-6">
+                    <h4>Billing Address</h4>
+                    <p>{{ user.fullName }}</p>
+                    <p>{{ user.addressBilling.street }}</p>
+                    <p>{{ user.addressBilling.streetAdd }}</p>
+                    <p>{{ user.addressBilling.city }} / {{ user.addressBilling.zipcode }}</p>
+                    <p>{{ user.addressBilling.state }}</p>
+                    <p>{{ user.addressBilling.country }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <br>
+        {#{% if user.orders|length %}
+            <h4>Orders</h4>
+            <br>
+            <table class="table table-stripped">
+                <tbody>
+                <tr>
+                    <th>Number</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+                {% for order in user.orders %}
+                    <tr>
+                        <td>{{ order.uniqId }}</td>
+                        <td>{{ order.state }}</td>
+                        <td>{{ order.createdAt|date("d/m/Y")}}</td>
+                        <td>{{ order.total }} €</td>
+                        <td><a href="{{ path('order', {orderNumber: order.uniqId})}}">Detail</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}#}
     </div>
 {% endblock fos_user_content %}

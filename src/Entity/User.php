@@ -18,9 +18,68 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AddressDelivery", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $addressDelivery;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AddressBilling", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $addressBilling;
+
+    //private $orders;
+
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->createdAt = new \Datetime('now');
     }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function getAddressDelivery() {
+        return $this->addressDelivery;
+    }
+
+    public function setAddressDelivery($addressDelivery) {
+        $this->addressDelivery = $addressDelivery;
+        return $this;
+    }
+
+    public function getAddressBilling() {
+        return $this->addressBilling;
+    }
+
+    public function setAddressBilling($addressBilling) {
+        $this->addressBilling = $addressBilling;
+        return $this;
+    }
+
+    /*public function getOrders() {
+        return $this->orders;
+    }
+
+    public function setOrders($orders) {
+        $this->orders = $orders;
+        return $this;
+    }*/
 }
