@@ -91,4 +91,15 @@ class CartController extends Controller
         $response = new Response('ok');
         return $response;
     }
+
+    /**
+     * @Route("/cart/remove/{id}", name="cart_remove")
+     */
+    public function removeAction(Request $request)
+    {
+        $cm = $this->get('cart_manager');
+        $cm->removeItem($request->get('id'), $request->get('quantity'));
+
+        return $this->redirect($this->generateUrl('cart'));
+    }
 }
