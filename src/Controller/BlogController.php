@@ -51,7 +51,7 @@ class BlogController extends Controller
             ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
         $latestProducts = $qb->getQuery()->getResult();
 
-        return $this->render('blog.html.twig', array(
+        return $this->render('blog/blog.html.twig', array(
             'blogs' => $blogs,
             'tags' => $tags,
             'pager' => $pagerfanta,
@@ -70,7 +70,7 @@ class BlogController extends Controller
             ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
         $latestProducts = $qb->getQuery()->getResult();
 
-        return $this->render('blog-detail.html.twig', array(
+        return $this->render('blog/blog-detail.html.twig', array(
             'blog' => $blog,
             'tags' => $tags,
             'latestProducts' => $latestProducts

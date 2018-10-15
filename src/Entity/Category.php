@@ -29,6 +29,9 @@ class Category {
      */
     private $img;
 
+    //Quel ORM ??
+    private $products;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Type", mappedBy="category", orphanRemoval=true)
      */

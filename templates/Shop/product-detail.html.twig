@@ -78,7 +78,7 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="time" id="size">
                                                 <option value="null">Choose an option</option>
                                                 {% for size in product.sizes %}
                                                     <option value="{{ size.id }}">{{ size.name }}</option>
@@ -98,7 +98,7 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="time" id="shape">
                                                 <option value="null">Choose an option</option>
                                                 {% for shape in product.shapes %}
                                                     <option value="{{ shape.id }}">{{ shape.name }}</option>
@@ -118,7 +118,7 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="time" id="material">
                                                 <option value="null">Choose an option</option>
                                                 {% for material in product.materials %}
                                                     <option value="{{ material.id }}">{{ material.name }}</option>
@@ -138,7 +138,7 @@
 
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
+                                            <select class="js-select2" name="time" id="color">
                                                 <option value="null">Choose an option</option>
                                                 {% for color in product.colors %}
                                                     <option value="{{ color.id }}">{{ color.name }}</option>
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-product="{{ product.id }}">
                                         Add to cart
                                     </button>
                                 </div>

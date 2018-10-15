@@ -42,7 +42,7 @@ class ProductController extends Controller
             $qb->andWhere('p.type = :type')->setParameter('type', $request->get('type'));
         }
 
-        // A faire
+        // A faire Price
         if($request->get('category'))
         {
             $qb->join('p.type', 't')->join('t.category' , 'c')->where('c.id = :category')->setParameter('category', $request->get('category'));
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $sizes = $this->getDoctrine()->getManager()->getRepository(Size::class)->findAll();
         $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
 
-        return $this->render('products.html.twig', array(
+        return $this->render('shop/products.html.twig', array(
             'products' => $products,
             'materials' => $materials,
             'shapes' => $shapes,
@@ -70,7 +70,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/1", name="product-detail")
+     * @Route("/product/{id}", name="product-detail")
      */
     public function showAction(Request $request)
     {
@@ -82,7 +82,7 @@ class ProductController extends Controller
         $latestProducts = $qb->getQuery()->getResult();
 
         // replace this example code with whatever you need
-        return $this->render('product-detail.html.twig', array(
+        return $this->render('shop/product-detail.html.twig', array(
             'product' => $product,
             'products' => $products,
             'latestProducts' => $latestProducts

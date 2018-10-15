@@ -43,6 +43,7 @@ Encore
     .addStyleEntry('css/product', './assets/css/_product.scss')
     .addStyleEntry('css/search', './assets/css/_search.scss')
     .addStyleEntry('css/account', './assets/css/_account.scss')
+    .addStyleEntry('css/faq', './assets/css/_faq.scss')
     .addStyleEntry('css/variables', './assets/css/_variables.scss')
 
     .createSharedEntry('vendor', [

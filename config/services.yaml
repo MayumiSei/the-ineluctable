@@ -27,6 +27,11 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    cart_manager:
+               class: App\Service\CartManager
+               arguments: ["@session"]
+               public: true
+
     admin.tag:
            class: App\Admin\TagAdmin
            arguments: [~, App\Entity\Tag, ~]
@@ -110,6 +115,13 @@ services:
           tags:
               - { name: sonata.admin, manager_type: orm, label: State, group: Product }
           public: true
+
+    admin.faq:
+           class: App\Admin\FaqAdmin
+           arguments: [~, App\Entity\Faq, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm, label: Faq, group: Faq }
+           public: true
 
     app.form.profile:
         class: App\Form\Type\ProfileFormType

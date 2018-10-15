@@ -39,19 +39,4 @@ class HomeController extends Controller
             'slides' => $slides
         ));
     }
-
-    /**
-     * @Route("/header", name="header")
-     */
-    public function menuAction(Request $request) {
-        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
-
-        $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
-
-        return $this->render('header.html.twig', array(
-            'categories' => $categories,
-            'types' => $types,
-            'route' => $request->get('route')
-        ));
-    }
 }

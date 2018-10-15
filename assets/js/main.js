@@ -266,19 +266,26 @@ var Isotope = require('isotope-layout');
         var numProduct = Number($(this).next().val());
         if(numProduct > 1) {
             $(this).next().val(numProduct - 1);
-            var price = parseInt($(this).parent().parent().parent().find('.product-price').text());
-            var totalPrice = parseInt($(this).parent().parent().parent().find('.total-product-price').text())
-            $(this).parent().parent().parent().find('.total-product-price').text(totalPrice - price);
+            var price = parseFloat($(this).parent().parent().parent().find('.product-price').text()).toFixed(2);
+            var totalProductPrice = parseFloat($(this).parent().parent().parent().find('.total-product-price').text()).toFixed(2);
+            var subTotal = parseFloat($('.sub-total').text()).toFixed(2);
+            var total = parseFloat($('.total').text()).toFixed(2);
+            $(this).parent().parent().parent().find('.total-product-price').text(parseFloat(totalProductPrice - price).toFixed(2));
+            $('.sub-total').text(parseFloat(subTotal - price).toFixed(2));
+            $('.total').text(parseFloat(total - price).toFixed(2));
         }
-
     });
 
     $('.btn-num-cart-product-up').on('click', function(){
         var numProduct = Number($(this).prev().val());
         $(this).prev().val(numProduct + 1);
-        var price = parseInt($(this).parent().parent().parent().find('.product-price').text());
-        var totalPrice = parseInt($(this).parent().parent().parent().find('.total-product-price').text()) + price
-        $(this).parent().parent().parent().find('.total-product-price').text(totalPrice);
+        var price = parseFloat($(this).parent().parent().parent().find('.product-price').text());
+        var totalProductPrice = parseFloat($(this).parent().parent().parent().find('.total-product-price').text());
+        var subTotal = parseFloat($('.sub-total').text());
+        var total = parseFloat($('.total').text());
+        $(this).parent().parent().parent().find('.total-product-price').text(totalProductPrice + price);
+        $('.sub-total').text(subTotal + price);
+        $('.total').text(parseFloat(total + price));
     });
 
     /*==================================================================
@@ -455,11 +462,15 @@ var Isotope = require('isotope-layout');
             var size_id = $("#size").val();
             var shape_id = $("#shape").val();
             var material_id = $("#material").val();
+            var color_id = $("#color").val();
+            var quantity = parseInt($(".num-product").val());
             var datas = {
                 product: product_id,
                 size : size_id,
                 shape : shape_id,
                 material : material_id,
+                color : color_id,
+                quantity : quantity
             };
             var url = site_url + 'cart/add';
             var nameProduct = $('.js-name-detail').text();
@@ -468,7 +479,7 @@ var Isotope = require('isotope-layout');
                 url: url,
                 data: datas,
                 success: function (data) {
-                    $('.js-show-cart').attr('data-notify', parseInt($('.js-show-cart').attr('data-notify')) + 1);
+                    $('.js-show-cart').attr('data-notify', parseInt($('.js-show-cart').attr('data-notify')) + quantity);
                     swal(nameProduct, "is added to cart !", "success");
                 }
             })
