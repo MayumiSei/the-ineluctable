@@ -25,20 +25,12 @@ class Category {
     private $name;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img;
-
-    //Quel ORM ??
-    private $products;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Type", mappedBy="category", orphanRemoval=true)
      */
     private $types;
 
-    public function __construct() { // dès qu'on créé une catégorie, un tableau se créé
-        $this->products = new ArrayCollection(); // tableau special de doctrine, collection, pas vraiment tableau
+    public function __construct() {
+        $this->types = new ArrayCollection();
     }
 
     public function __toString() {
@@ -62,44 +54,26 @@ class Category {
         return $this;
     }
 
-    public function getImg() {
-        return $this->img;
-    }
-
-    public function setImg($img) {
-        $this->img = $img;
-        return $this;
-    }
-
-    public function getProducts() {
-        return $this->products;
-    }
-
-    public function setProducts($products) {
-        $this->products = $products;
-        return $this;
-    }
-
-    public function addProduct(Product $product) { // on type $product, comme ça renvoie erreur si ce n'est pas un product (class)
-        if(!$this->products->contains($product)) {
-            $this->products[] = $product; // quand il y a des crochets puis un =, cela veut dire qu on ajoute
-        }
-        return $this;
-    }
-
-    public function removeProduct(Product $product) {
-        if($this->products->contains($product)) {
-            $this->products->removeElement($product);
-        }
-        return $this;
-    }
-
     public function getTypes() {
         return $this->types;
     }
 
     public function setTypes($types) {
         $this->types = $types;
+        return $this;
+    }
+
+    public function addType(Type $type) {
+        if(!$this->types->contains($type)) {
+            $this->types[] = $type;
+        }
+        return $this;
+    }
+
+    public function removeType(Type $type) {
+        if($this->types->contains($type)) {
+            $this->types->removeElement($type);
+        }
         return $this;
     }
 }

@@ -22,11 +22,6 @@ class Material {
      */
     private $name;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="materials")
-     */
-    private $products;
-
     public function __toString() {
         $string = '';
         if($this->name)
@@ -45,15 +40,6 @@ class Material {
 
     public function setName($name) {
         $this->name = $name;
-        return $this;
-    }
-
-    public function getProducts() {
-        return $this->products;
-    }
-
-    public function setProducts($products) {
-        $this->products = $products;
         return $this;
     }
 }

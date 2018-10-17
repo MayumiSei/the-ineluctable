@@ -28,11 +28,6 @@ class Collection {
     protected $media;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="collection", orphanRemoval=true)
-     */
-    private $products;
-
-    /**
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
@@ -68,15 +63,6 @@ class Collection {
 
     public function setMedia($media) {
         $this->media = $media;
-        return $this;
-    }
-
-    public function getProducts() {
-        return $this->products;
-    }
-
-    public function setProducts($products) {
-        $this->products = $products;
         return $this;
     }
 

@@ -24,7 +24,10 @@ class ProductAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('title', TextType::class);
-        $formMapper->add('description', TextareaType::class);
+        $formMapper->add('description', TextareaType::class, array(
+            'required' => false,
+            'label' => 'Description *'
+        ));
         $formMapper->add('price', TextType::class);
         $formMapper->add('sizes', EntityType::class, [
             'class' => Size::class,

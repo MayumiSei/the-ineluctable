@@ -24,12 +24,6 @@ class Product {
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $type;
-
-    /**
      * @ORM\Column(type="float")
      */
     private $price;
@@ -45,36 +39,42 @@ class Product {
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Material", inversedBy="products")
+     * @ORM\ManyToMany(targetEntity="Material")
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_material")
+     * @ORM\JoinTable(name="product_materials")
      */
     private $materials;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Collection", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Collection")
      * @ORM\JoinColumn(nullable=false)
      */
     private $collection;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Shape", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Shape")
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_shape")
+     * @ORM\JoinTable(name="product_shapes")
      */
     private $shapes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Size", inversedBy="products")
+     * @ORM\ManyToMany(targetEntity="Size")
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_size")
+     * @ORM\JoinTable(name="product_sizes")
      */
     private $sizes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Color", inversedBy="products")
+     * @ORM\ManyToMany(targetEntity="Color")
      * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_color")
+     * @ORM\JoinTable(name="product_colors")
      */
     private $colors;
 
@@ -84,7 +84,7 @@ class Product {
     private $gallery;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\State", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\State")
      * @ORM\JoinColumn(nullable=true)
      */
     private $state;

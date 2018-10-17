@@ -24,15 +24,6 @@ class State {
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="state", orphanRemoval=true)
-     */
-    private $products;
-
-    public function __construct() {
-        $this->products = new ArrayCollection();
-    }
-
     public function __toString() {
         $string = '';
         if($this->name)
@@ -51,15 +42,6 @@ class State {
 
     public function setName($name) {
         $this->name = $name;
-        return $this;
-    }
-
-    public function getProducts() {
-        return $this->products;
-    }
-
-    public function setProducts($products) {
-        $this->products = $products;
         return $this;
     }
 }
