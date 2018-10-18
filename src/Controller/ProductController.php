@@ -21,6 +21,14 @@ class ProductController extends Controller
     public function indexAction(Request $request)
     {
         $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p');
+        if($request->get('price') == 'priceHigh')
+        {
+            $qb->orderBy('p.price', 'DESC');
+        }
+        if($request->get('price') == 'priceLow')
+        {
+            $qb->orderBy('p.price', 'ASC');
+        }
         if($request->request->get('material') && $request->request->get('material') !== 'All')
         {
             $qb->join('p.materials', 'm')->where('m.id = :material')->setParameter('material', $request->request->get('material'));
@@ -42,7 +50,6 @@ class ProductController extends Controller
             $qb->andWhere('p.type = :type')->setParameter('type', $request->get('type'));
         }
 
-        // A faire Price
         if($request->get('category'))
         {
             $qb->join('p.type', 't')->join('t.category' , 'c')->where('c.id = :category')->setParameter('category', $request->get('category'));
