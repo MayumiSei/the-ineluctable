@@ -51,8 +51,6 @@
                                 <a href="{{ path('sonata_admin_dashboard') }}">Admin Dashboard</a>
                             </li>
                         {% endif %}
-
-
                     </ul>
                 </div>
 
@@ -162,9 +160,11 @@
                 <a href="{{ path('about') }}">About</a>
             </li>
 
-            <li>
-                <a href="{{ path('contact')}}">Contact</a>
-            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('sonata_admin_dashboard') }}">Admin Dashboard</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 
