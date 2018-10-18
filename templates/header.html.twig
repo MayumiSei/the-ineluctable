@@ -48,7 +48,7 @@
 
                         {% if is_granted('ROLE_ADMIN') %}
                             <li {% if 'sonata_admin_dashboard' in route %}class="active-menu" {% endif %}>
-                                <a href="{{ path('sonata_admin_dashboard') }}">Admin Dashboard</a>
+                                <a href="{{ path('sonata_admin_dashboard') }}">Admin</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -162,7 +162,7 @@
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li>
-                    <a href="{{ path('sonata_admin_dashboard') }}">Admin Dashboard</a>
+                    <a href="{{ path('sonata_admin_dashboard') }}">Admin</a>
                 </li>
             {% endif %}
         </ul>

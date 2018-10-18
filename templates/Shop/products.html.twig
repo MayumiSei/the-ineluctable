@@ -99,8 +99,8 @@
                                     <div class="mtext-102 cl2 p-b-15">
                                         Sizes
                                     </div>
-                                    <div class="flex-w p-t-4 m-r--5">
-                                        <select name="size" class="flex-w p-t-4 m-r--5">
+                                    <div class="flex-w p-t-4 m-r--5 form-group">
+                                        <select name="size" class="form-control col-xs-2 col-sm-6">
                                             <option class="p-b-6" value="All">
                                                 All
                                             </option>
@@ -115,12 +115,12 @@
                             {% endif %}
 
                             {% if materials|length %}
-                                <div class="filter-col2 p-r-15 p-b-27">
+                                <div class="filter-col4 p-r-15 p-b-27">
                                     <div class="mtext-102 cl2 p-b-15">
                                         Materials
                                     </div>
-                                    <div class="flex-w p-t-4 m-r--5">
-                                        <select name="material">
+                                    <div class="flex-w p-t-4 m-r--5 form-group">
+                                        <select name="material" class="form-control col-xs-2 col-sm-6">
                                             <option class="p-b-6" value="All">
                                                 All
                                             </option>
@@ -135,12 +135,12 @@
                             {% endif %}
 
                             {% if colors|length %}
-                                <div class="filter-col3 p-r-15 p-b-27">
+                                <div class="filter-col4 p-r-15 p-b-27">
                                     <div class="mtext-102 cl2 p-b-15">
                                         Colors
                                     </div>
-                                    <div class="flex-w p-t-4 m-r--5">
-                                        <select name="color">
+                                    <div class="flex-w p-t-4 m-r--5 form-group">
+                                        <select name="color" class="form-control col-xs-2 col-sm-6">
                                             <option class="p-b-6" value="All">
                                                 All
                                             </option>
@@ -159,8 +159,8 @@
                                     <div class="mtext-102 cl2 p-b-15">
                                         Shapes
                                     </div>
-                                    <div class="flex-w p-t-4 m-r--5">
-                                        <select name="shape" class="flex-w p-t-4 m-r--5">
+                                    <div class="flex-w p-t-4 m-r--5 form-group">
+                                        <select name="shape" class="form-control col-xs-2 col-sm-6">
                                             <option class="p-b-6" value="All">
                                                 All
                                             </option>
@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            <input type="submit" value="send">
+                            <input type="submit" value="send" class="flex-c-m stext-101 cl0 bg1 bor1 hov-btn2 p-lr-15 trans-04 filter-send">
                         </div>
                     </form>
                 </div>
