@@ -29,6 +29,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
         $product1->setPrice('49.99');
         $product1->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultrices neque at leo dictum blandit. Aenean vel odio sem. Curabitur lectus felis, pulvinar accumsan facilisis in, auctor vel est. Nunc bibendum lacus at lectus vulputate tempus. In gravida, lorem non sodales commodo, tortor velit varius sapien, eget consequat justo metus a massa. Duis et velit accumsan, porttitor elit ut, sollicitudin magna. Mauris varius, orci eget hendrerit dignissim, mauris arcu blandit tortor, at suscipit metus arcu quis dui");
         $product1->setType($this->getReference('type1'));
+        $product1->setState($this->getReference('state1'));
         $product1->setCollection($this->getReference('collection1'));
         $product1->addSize($this->getReference('size1'));
         $product1->addShape($this->getReference('shape1'));
@@ -61,6 +62,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
         $product2->setPrice('59.99');
         $product2->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultrices neque at leo dictum blandit. Aenean vel odio sem. Curabitur lectus felis, pulvinar accumsan facilisis in, auctor vel est. Nunc bibendum lacus at lectus vulputate tempus. In gravida, lorem non sodales commodo, tortor velit varius sapien, eget consequat justo metus a massa. Duis et velit accumsan, porttitor elit ut, sollicitudin magna. Mauris varius, orci eget hendrerit dignissim, mauris arcu blandit tortor, at suscipit metus arcu quis dui");
         $product2->setType($this->getReference('type2'));
+        $product2->setState($this->getReference('state2'));
         $product2->setCollection($this->getReference('collection1'));
         $product2->addSize($this->getReference('size2'));
         $product2->addShape($this->getReference('shape2'));
@@ -168,6 +170,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
             SizeFixtures::class,
             ShapeFixtures::class,
             MaterialFixtures::class,
+            StateFixtures::class,
         );
     }
 }
