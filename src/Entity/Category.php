@@ -64,6 +64,7 @@ class Category {
     }
 
     public function addType(Type $type) {
+        $type->setCategory($this);
         if(!$this->types->contains($type)) {
             $this->types[] = $type;
         }

@@ -79,7 +79,7 @@ class Product {
     private $colors;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Gallery", cascade={"persist", "remove"})
      */
     private $gallery;
 

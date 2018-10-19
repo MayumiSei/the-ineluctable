@@ -26,4 +26,5 @@ return [
     Sonata\EasyExtendsBundle\SonataEasyExtendsBundle::class => ['all' => true],
     JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
     App\Application\Sonata\MediaBundle\ApplicationSonataMediaBundle::class => ['all' => true],
+    Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
 ];
