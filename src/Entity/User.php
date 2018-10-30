@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,10 +36,15 @@ class User extends BaseUser
      */
     protected $addressBilling;
 
-    //private $orders;
+    /**
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", orphanRemoval=true)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $orders;
 
     public function __construct()
     {
+        $this->orders = new ArrayCollection();
         parent::__construct();
         $this->createdAt = new \Datetime('now');
     }
@@ -74,12 +80,26 @@ class User extends BaseUser
         return $this;
     }
 
-    /*public function getOrders() {
+    public function getOrders() {
         return $this->orders;
     }
 
     public function setOrders($orders) {
         $this->orders = $orders;
         return $this;
-    }*/
+    }
+
+    public function addOrder(Order $order) {
+        if(!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+        }
+        return $this;
+    }
+
+    public function removeOrder(Order $order) {
+        if($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+        }
+        return $this;
+    }
 }

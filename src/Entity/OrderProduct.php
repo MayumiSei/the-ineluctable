@@ -64,6 +64,12 @@ class OrderProduct {
      */
     private $quantity;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Order", inversedBy="orderProducts")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $order;
+
     public function __construct() {
         $this->createdAt = new \Datetime('now');
     }
@@ -145,7 +151,7 @@ class OrderProduct {
         return $this;
     }
 
-    /*public function getOrder()
+    public function getOrder()
     {
         return $this->order;
     }
@@ -153,5 +159,5 @@ class OrderProduct {
     public function setOrder(Order $order)
     {
         $this->order = $order;
-    }*/
+    }
 }
