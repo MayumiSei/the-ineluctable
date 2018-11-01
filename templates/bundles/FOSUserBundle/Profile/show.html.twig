@@ -33,7 +33,7 @@
             {% endif %}
         </div>
         <br>
-        {#{% if user.orders|length %}
+        {% if user.orders|length %}
             <h4>Orders</h4>
             <br>
             <table class="table table-stripped">
@@ -56,6 +56,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-        {% endif %}#}
+        {% endif %}
     </div>
 {% endblock fos_user_content %}
