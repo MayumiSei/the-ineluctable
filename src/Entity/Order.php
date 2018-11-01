@@ -12,7 +12,7 @@ use App\Entity\User;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="order")
+ * @ORM\Table(name="`order`")
  */
 class Order
 {
@@ -39,7 +39,7 @@ class Order
     protected $total;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $user;
@@ -61,6 +61,7 @@ class Order
         $this->orderProducts = new ArrayCollection();
         $this->createdAt = new \Datetime('now');
         $this->uniqId = uniqid();
+        $this->total = 0;
     }
 
     public function __toString(){

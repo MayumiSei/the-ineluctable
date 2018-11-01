@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user")
  */
 class User extends BaseUser
 {
@@ -37,7 +37,7 @@ class User extends BaseUser
     protected $addressBilling;
 
     /**
-     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", orphanRemoval=true, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $orders;

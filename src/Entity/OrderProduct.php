@@ -36,25 +36,25 @@ class OrderProduct {
     private $product;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Material", inversedBy="orderProducts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Material")
      * @ORM\JoinColumn(nullable=true)
      */
     private $material;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Shape", inversedBy="orderProducts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Shape")
      * @ORM\JoinColumn(nullable=true)
      */
     private $shape;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Size", inversedBy="orderProducts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Size")
      * @ORM\JoinColumn(nullable=true)
      */
     private $size;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Color", inversedBy="orderProducts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Color")
      * @ORM\JoinColumn(nullable=true)
      */
     private $color;
