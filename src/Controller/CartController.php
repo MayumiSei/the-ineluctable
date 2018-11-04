@@ -6,6 +6,7 @@ use App\Entity\Color;
 use App\Entity\Material;
 use App\Entity\Order;
 use App\Entity\OrderProduct;
+use App\Entity\OrderState;
 use App\Entity\Product;
 use App\Entity\Shape;
 use App\Entity\Size;
@@ -122,7 +123,12 @@ class CartController extends Controller
             $order->addOrderProduct($orderProduct);
         }
 
+        $state = $this->getDoctrine()->getManager()->getRepository(OrderState::class)->findOneBy(array(
+            'name' => 'PROCESSING'
+        ));
+
         $order->setUser($user);
+        $order->setState($state);
 
         $this->getDoctrine()->getManager()->persist($order);
         $this->getDoctrine()->getManager()->flush();

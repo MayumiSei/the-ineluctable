@@ -123,6 +123,27 @@ services:
                - { name: sonata.admin, manager_type: orm, label: Faq, group: Faq }
            public: true
 
+    admin.order:
+               class: App\Admin\OrderAdmin
+               arguments: [~, App\Entity\Order, ~]
+               tags:
+                   - { name: sonata.admin, manager_type: orm, label: Order, group: Order }
+               public: true
+
+    admin.orderState:
+           class: App\Admin\OrderStateAdmin
+           arguments: [~, App\Entity\OrderState, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm, label: OrderState, group: Order }
+           public: true
+
+    admin.orderProduct:
+               class: App\Admin\OrderProductAdmin
+               arguments: [~, App\Entity\OrderProduct, ~]
+               tags:
+                   - { name: sonata.admin, manager_type: orm, label: OrderProduct, group: Order }
+               public: true
+
     app.form.profile:
         class: App\Form\Type\ProfileFormType
         tags:

@@ -29,7 +29,8 @@ class Order
     protected $uniqId;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="OrderState")
+     * @ORM\JoinColumn(nullable=true)
      */
     protected $state;
 
@@ -57,7 +58,6 @@ class Order
 
     public function __construct()
     {
-        $this->state = 'PROCESSING';
         $this->orderProducts = new ArrayCollection();
         $this->createdAt = new \Datetime('now');
         $this->uniqId = uniqid();
@@ -80,7 +80,7 @@ class Order
         return $this->state;
     }
 
-    public function setState(String $state) {
+    public function setState(OrderState $state) {
         $this->state = $state;
         return $this;
     }
