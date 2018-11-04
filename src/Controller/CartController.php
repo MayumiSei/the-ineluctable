@@ -26,6 +26,7 @@ class CartController extends Controller
         $orderProducts = [];
         $items = $cm->getItems();
         $subTotal = 0;
+        $shipping = 10;
 
         foreach ($items as $key => $value) {
             $orderProduct = $this->getDoctrine()->getManager()->getRepository(OrderProduct::class)->find($value);
@@ -36,7 +37,8 @@ class CartController extends Controller
 
         return $this->render('shop/shoping-cart.html.twig', array(
             'orderProducts' => $orderProducts,
-            'subTotal' => $subTotal
+            'subTotal' => $subTotal,
+            'shipping' => $shipping
         ));
     }
 

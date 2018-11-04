@@ -102,11 +102,11 @@
                             </div>
 
                             <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-                                <p class="stext-111 cl6 p-t-2">
-                                    There are no shipping methods available. Please double check your address, or contact us if you need any help.
+                                <p class="mtext-110 cl2 ">
+                                    <span class="shipping">{{ shipping }}</span> €
                                 </p>
 
-                                <div class="p-t-15">
+                                <!--<div class="p-t-15">
 									<span class="stext-112 cl8">
 										Calculate Shipping
 									</span>
@@ -134,7 +134,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div>-->
                             </div>
                         </div>
 
@@ -146,7 +146,7 @@
                             </div>
 
                             <div class="size-209 p-t-1">
-								<span class="mtext-110 cl2 total">{{ subTotal }}</span>  €
+								<span class="mtext-110 cl2 total">{{ subTotal + shipping }}</span>  €
                             </div>
                         </div>
 
