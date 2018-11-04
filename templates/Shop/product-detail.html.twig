@@ -79,9 +79,12 @@
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
                                             <select class="js-select2" name="time" id="size">
-                                                <option value="null">Choose an option</option>
                                                 {% for size in product.sizes %}
-                                                    <option value="{{ size.id }}">{{ size.name }}</option>
+                                                    {% if loop.first %}
+                                                        <option value="{{ size.id }}" selected>{{ size.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ size.id }}">{{ size.name }}</option>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </select>
                                             <div class="dropDownSelect2"></div>
@@ -99,9 +102,12 @@
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
                                             <select class="js-select2" name="time" id="shape">
-                                                <option value="null">Choose an option</option>
                                                 {% for shape in product.shapes %}
-                                                    <option value="{{ shape.id }}">{{ shape.name }}</option>
+                                                    {% if loop.first %}
+                                                        <option value="{{ shape.id }}" selected>{{ shape.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ shape.id }}">{{ shape.name }}</option>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </select>
                                             <div class="dropDownSelect2"></div>
@@ -119,9 +125,12 @@
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
                                             <select class="js-select2" name="time" id="material">
-                                                <option value="null">Choose an option</option>
                                                 {% for material in product.materials %}
-                                                    <option value="{{ material.id }}">{{ material.name }}</option>
+                                                    {% if loop.first %}
+                                                        <option value="{{ material.id }}" selected>{{ material.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ material.id }}">{{ material.name }}</option>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </select>
                                             <div class="dropDownSelect2"></div>
@@ -139,9 +148,12 @@
                                     <div class="size-204 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
                                             <select class="js-select2" name="time" id="color">
-                                                <option value="null">Choose an option</option>
                                                 {% for color in product.colors %}
-                                                    <option value="{{ color.id }}">{{ color.name }}</option>
+                                                    {% if loop.first %}
+                                                        <option value="{{ color.id }}" selected>{{ color.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ color.id }}">{{ color.name }}</option>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </select>
                                             <div class="dropDownSelect2"></div>
