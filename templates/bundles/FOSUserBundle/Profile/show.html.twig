@@ -65,7 +65,7 @@
                         <td>{{ order.state }}</td>
                         <td>{{ order.createdAt|date("d/m/Y")}}</td>
                         <td>{{ order.total }} €</td>
-                        <td><a href="{{ path('order', {orderNumber: order.uniqId})}}">Detail</a></td>
+                        <td><a href="{{ path('order', {orderNumber: order.uniqId})}}" class="btn-blue">Detail</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
