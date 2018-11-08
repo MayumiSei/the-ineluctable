@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Color;
 use App\Entity\Material;
 use App\Entity\Product;
@@ -65,6 +66,7 @@ class ProductController extends Controller
         $colors = $this->getDoctrine()->getManager()->getRepository(Color::class)->findAll();
         $sizes = $this->getDoctrine()->getManager()->getRepository(Size::class)->findAll();
         $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
+        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
 
         return $this->render('shop/products.html.twig', array(
             'products' => $products,
@@ -72,7 +74,8 @@ class ProductController extends Controller
             'shapes' => $shapes,
             'colors' => $colors,
             'sizes' => $sizes,
-            'types' => $types
+            'types' => $types,
+            'categories' => $categories
         ));
     }
 

@@ -66,7 +66,7 @@
                         <td>{{ order.createdAt|date("d/m/Y")}}</td>
                         <td>
                             {% set shipping = 10 %}
-                                {{ order.total + shipping }} €
+                                {{ order.total + shipping }} $
                         </td>
                         <td><a href="{{ path('order', {orderNumber: order.uniqId})}}" class="btn-blue">Detail</a></td>
                     </tr>

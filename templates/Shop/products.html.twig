@@ -20,9 +20,9 @@
                     <a href="{{ path('products') }}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1">
                         All Products
                     </a>
-                    {% for type in types %}
-                        <a href="{{ path('products', {type: type.id}) }}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">
-                            {{ type.name }}
+                    {% for category in categories %}
+                        <a href="{{ path('products', {category: category.id}) }}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">
+                            {{ category.name }}
                         </a>
                     {% endfor %}
                 </div>
@@ -181,7 +181,7 @@
                                         </a>
 
                                         <span class="stext-105 cl3">
-                                            {{ product.price }} €
+                                            {{ product.price }} $
                                         </span>
                                     </div>
                                 </div>
