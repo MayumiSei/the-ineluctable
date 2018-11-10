@@ -46,6 +46,7 @@ Encore
     .addStyleEntry('css/faq', './assets/css/_faq.scss')
     .addStyleEntry('css/variables', './assets/css/_variables.scss')
     .addStyleEntry('css/admin-menu', './assets/css/_admin-menu.scss')
+    .addStyleEntry('css/cart', './assets/css/_cart.scss')
 
     .createSharedEntry('vendor', [
         'jquery',

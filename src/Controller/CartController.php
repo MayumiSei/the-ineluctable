@@ -106,38 +106,4 @@ class CartController extends Controller
 
         return $this->redirect($this->generateUrl('cart'));
     }
-
-    /**
-     * @Route("/cart/payment", name="cart_payment")
-     */
-    public function paymentAction(Request $request) {
-        $user = $this->getUser();
-
-        if(!$user) {
-            return $this->redirect($this->generateUrl('fos_user_profile_show'));
-        }
-
-        $order = new Order();
-        $cm = $this->get('cart_manager');
-        $items = $cm->getItems();
-        foreach ($items as $item) {
-            $orderProduct = $this->getDoctrine()->getManager()->getRepository(OrderProduct::class)->find($item);
-            $order->addOrderProduct($orderProduct);
-        }
-
-        $state = $this->getDoctrine()->getManager()->getRepository(OrderState::class)->findOneBy(array(
-            'name' => 'PROCESSING'
-        ));
-
-        $order->setUser($user);
-        $order->setState($state);
-
-        $this->getDoctrine()->getManager()->persist($order);
-        $this->getDoctrine()->getManager()->flush();
-
-        $this->get('session')->remove("cart_items");
-        $this->get('session')->remove("cart_items_number");
-
-        return $this->redirect($this->generateUrl('fos_user_profile_show'));
-    }
 }

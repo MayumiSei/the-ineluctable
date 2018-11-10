@@ -2,6 +2,8 @@
 
 {% block stylesheets %}
     <link href="{{ asset('build/css/product.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/cart.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/css/account.css') }}">
 {% endblock %}
 
 {%  block body %}
@@ -51,20 +53,8 @@
                                             <span class="product-price">{{ orderProduct.product.price }}</span> $
                                         </td>
                                         <td class="column-4">
-                                            <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                <div class="btn-num-cart-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-minus"></i>
-                                                </div>
+                                            <p>{{ orderProduct.quantity }}</p>
 
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{ orderProduct.quantity }}">
-
-                                                <div class="btn-num-cart-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-plus"></i>
-                                                </div>
-                                            </div>
-                                            <a class="remove-item" href="{{ path('cart_remove', {id: orderProduct.id, quantity:  orderProduct.quantity })}}">
-                                                <i class="fs-16 zmdi zmdi-delete"></i>
-                                            </a>
                                         </td>
                                         <td class="column-5">
                                             <span class="total-product-price">{{ orderProduct.product.price * orderProduct.quantity }}</span>  $
@@ -72,6 +62,53 @@
                                     </tr>
                                 {% endfor %}
                             </table>
+                        </div>
+                    </div>
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart p-20 border-cart">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 border-right-cart">
+                                    <h2>Address Delivery</h2>
+                                        {% if user.addressDelivery|length %}
+                                            <p>{{ user.addressDelivery.firstName }} {{ user.addressDelivery.lastName }}</p>
+                                            <p>{{ user.addressDelivery.street }},
+                                                {% if user.addressDelivery.streetAdd|length %}
+                                                    {{ user.addressDelivery.streetAdd }},
+                                                {% endif %}
+                                            </p>
+                                            <p>{{ user.addressDelivery.city }},
+                                                {{ user.addressDelivery.zipCode }}</p>
+                                            <p>{{ user.addressDelivery.state }}</p>
+                                            <p>{{ user.addressDelivery.country }}</p>
+                                        {% endif %}
+                                    <div class="float-right">
+                                        <a href="{{ path('fos_user_profile_edit') }}" class="btn-blue">Edit</a>
+                                    </div>
+                                    {% for message in app.flashes('notice') %}
+                                        <div class="flash-notice margin-top-15 color-danger">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <h2>Address Billing</h2>
+                                    {% if user.addressBilling|length %}
+                                        <p>{{ user.addressBilling.firstName }} {{ user.addressBilling.lastName }}</p>
+                                        <p>{{ user.addressBilling.street }},
+                                            {% if user.addressBilling.streetAdd|length %}
+                                                {{ user.addressBilling.streetAdd }},
+                                            {% endif %}
+                                        </p>
+                                        <p>{{ user.addressBilling.city }},
+                                            {{ user.addressBilling.zipCode }}</p>
+                                        <p>{{ user.addressBilling.state }}</p>
+                                        <p>{{ user.addressBilling.country }}</p>
+                                    {% endif %}
+                                    <div class="float-right">
+                                        <a href="{{ path('fos_user_profile_edit') }}" class="btn-blue">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +127,7 @@
                             </div>
 
                             <div class="size-209">
-								<span class="mtext-110 cl2 sub-total">{{ subTotal }}</span>  $
+                                <span class="mtext-110 cl2 sub-total">{{ subTotal }}</span>  $
                             </div>
                         </div>
 
@@ -146,13 +183,13 @@
                             </div>
 
                             <div class="size-209 p-t-1">
-								<span class="mtext-110 cl2 total">{{ subTotal + shipping }}</span>  $
+                                <span class="mtext-110 cl2 total">{{ subTotal + shipping }}</span>  $
                             </div>
                         </div>
 
                         {% if orderProducts|length %}
-                            <a href="{{ path('cart-checkout') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                                Proceed to Checkout
+                            <a href="{{ path('cart_payment') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                                Payment
                             </a>
                         {% endif %}
                     </div>
