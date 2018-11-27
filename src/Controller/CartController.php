@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Color;
 use App\Entity\Material;
-use App\Entity\Order;
 use App\Entity\OrderProduct;
-use App\Entity\OrderState;
 use App\Entity\Product;
 use App\Entity\Shape;
 use App\Entity\Size;
@@ -35,7 +33,7 @@ class CartController extends Controller
 
         }
 
-        return $this->render('shop/shoping-cart.html.twig', array(
+        return $this->render('Shop/shoping-cart.html.twig', array(
             'orderProducts' => $orderProducts,
             'subTotal' => $subTotal,
             'shipping' => $shipping

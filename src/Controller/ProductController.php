@@ -68,7 +68,7 @@ class ProductController extends Controller
         $types = $this->getDoctrine()->getManager()->getRepository(Type::class)->findAll();
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
 
-        return $this->render('shop/products.html.twig', array(
+        return $this->render('Shop/products.html.twig', array(
             'products' => $products,
             'materials' => $materials,
             'shapes' => $shapes,
@@ -85,14 +85,14 @@ class ProductController extends Controller
     public function showAction(Request $request)
     {
         $product = $this->getDoctrine()->getManager()->getRepository(Product::class)->find($request->get('id'));
-        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy(array('collection' => $product->getCollection()));
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)
+            ->findBy(array('collection' => $product->getCollection()));
 
         $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
             ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
         $latestProducts = $qb->getQuery()->getResult();
 
-        // replace this example code with whatever you need
-        return $this->render('shop/product-detail.html.twig', array(
+        return $this->render('Shop/product-detail.html.twig', array(
             'product' => $product,
             'products' => $products,
             'latestProducts' => $latestProducts

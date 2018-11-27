@@ -62,7 +62,7 @@
                 {% for order in user.orders %}
                     <tr>
                         <td>{{ order.uniqId }}</td>
-                        <td>{{ order.state }}</td>
+                        <td>{{ order.state.name }}</td>
                         <td>{{ order.createdAt|date("d/m/Y")}}</td>
                         <td>
                             {% set shipping = 10 %}

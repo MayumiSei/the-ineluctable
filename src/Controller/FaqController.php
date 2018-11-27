@@ -16,7 +16,7 @@ class FaqController extends Controller
     {
         $faqs = $this->getDoctrine()->getManager()->getRepository(Faq::class)->findAll();
 
-        return $this->render('footer/faq.html.twig', array(
+        return $this->render('Footer/faq.html.twig', array(
             'faqs' => $faqs
         ));
     }

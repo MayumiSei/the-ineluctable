@@ -36,7 +36,8 @@ class ProductAdmin extends AbstractAdmin {
         ]);
         $formMapper->add('materials', EntityType::class, [
             'class' => Material::class,
-            'multiple' => true
+            'multiple' => true,
+            'required' => false
         ]);
         $formMapper->add('collection', EntityType::class, [
             'class' => Collection::class,
@@ -47,7 +48,8 @@ class ProductAdmin extends AbstractAdmin {
         ]);
         $formMapper->add('colors', EntityType::class, [
             'class' => Color::class,
-            'required' => false
+            'required' => false,
+            'multiple' => true
         ]);
         $formMapper->add('state', EntityType::class, [
             'class' => State::class,

@@ -36,7 +36,7 @@ class CollectionFixtures extends Fixture implements ContainerAwareInterface
         $collection3 = new Collection();
         $collection3->setName("Collection3");
         //$collection3->setCatchPhrase('Winter 2018');
-        $collection3File = new File(__DIR__ . '/../../public/images/Aurora-Borealis-Chocker.jpg');
+        $collection3File = new File(__DIR__ . '/../../public/images/crescent.jpg');
         $collection3->setMedia($this->createMedia($collection3File, 'collection3.jpg'));
 
         $manager->persist($collection1);

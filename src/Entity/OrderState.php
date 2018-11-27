@@ -8,7 +8,7 @@ use App\Entity\Product;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="orderState")
+ * @ORM\Table(name="order_state")
  */
 class OrderState {
 

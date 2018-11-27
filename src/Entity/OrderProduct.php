@@ -13,7 +13,7 @@ use App\Entity\Material;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="orderProduct")
+ * @ORM\Table(name="order_product")
  */
 class OrderProduct {
 

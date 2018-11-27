@@ -240,7 +240,7 @@
                                             <div class="block2-pic hov-img0">
                                                 {% for img in latestProduct.gallery.galleryHasMedias %}
                                                     {% if loop.index == 1 %}
-                                                        <img src="{% path img.media, 'big' %}" alt="{{ latestProduct.title }}">
+                                                        <img src="{% path img.media, 'big' %}" alt="{{ latestProduct.title }}" class="h-473">
                                                     {% endif %}
                                                 {% endfor %}
 

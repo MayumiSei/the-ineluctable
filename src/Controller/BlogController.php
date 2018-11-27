@@ -48,10 +48,10 @@ class BlogController extends Controller
         }
 
         $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
-            ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
+            ->orderBy('p.createdAt', 'DESC')->setMaxResults('3');
         $latestProducts = $qb->getQuery()->getResult();
 
-        return $this->render('blog/blog.html.twig', array(
+        return $this->render('Blog/blog.html.twig', array(
             'blogs' => $blogs,
             'tags' => $tags,
             'pager' => $pagerfanta,
@@ -67,10 +67,10 @@ class BlogController extends Controller
         $blog = $this->getDoctrine()->getManager()->getRepository(Blog::class)->find($request->get('id'));
         $tags = $this->getDoctrine()->getManager()->getRepository(Tag::class)->findAll();
         $qb = $this->getDoctrine()->getEntityManager()->createQueryBuilder()->select('p')->from(Product::class, 'p')
-            ->orderBy('p.createdAt', 'DESC')->setMaxResults('8');
+            ->orderBy('p.createdAt', 'DESC')->setMaxResults('3');
         $latestProducts = $qb->getQuery()->getResult();
 
-        return $this->render('blog/blog-detail.html.twig', array(
+        return $this->render('Blog/blog-detail.html.twig', array(
             'blog' => $blog,
             'tags' => $tags,
             'latestProducts' => $latestProducts

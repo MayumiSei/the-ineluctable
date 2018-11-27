@@ -35,7 +35,7 @@ class CheckoutController extends Controller
 
         }
 
-        return $this->render('shop/checkout-cart.html.twig', array(
+        return $this->render('Shop/checkout-cart.html.twig', array(
             'orderProducts' => $orderProducts,
             'subTotal' => $subTotal,
             'shipping' => $shipping,

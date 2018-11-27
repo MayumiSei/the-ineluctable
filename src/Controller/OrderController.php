@@ -16,7 +16,7 @@ class OrderController extends Controller
         $order = $this->getDoctrine()->getManager()->getRepository(Order::class)->findOneBy(array(
             'uniqId' => $request->get('orderNumber')));
 
-        return $this->render('shop/order-detail.html.twig', array(
+        return $this->render('Shop/order-detail.html.twig', array(
             'order' => $order
         ));
     }
