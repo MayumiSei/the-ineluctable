@@ -34,10 +34,8 @@ class ProductAdmin extends AbstractAdmin {
             'multiple' => true,
             'required' => false
         ]);
-        $formMapper->add('materials', EntityType::class, [
+        $formMapper->add('material', EntityType::class, [
             'class' => Material::class,
-            'multiple' => true,
-            'required' => false
         ]);
         $formMapper->add('collection', EntityType::class, [
             'class' => Collection::class,
@@ -74,7 +72,7 @@ class ProductAdmin extends AbstractAdmin {
         $listMapper->add('description');
         $listMapper->add('price');
         $listMapper->add('sizes');
-        $listMapper->add('materials');
+        $listMapper->add('material');
         $listMapper->add('colors');
         $listMapper->add('type');
         $listMapper->add('state');

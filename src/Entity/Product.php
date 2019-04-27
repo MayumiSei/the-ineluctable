@@ -39,11 +39,10 @@ class Product {
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Material")
-     * @ORM\JoinColumn(nullable=true)
-     * @ORM\JoinTable(name="product_materials")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Material")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $materials;
+    private $material;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Collection")
@@ -90,7 +89,6 @@ class Product {
     private $state;
 
     public function __construct() {
-        $this->materials = new ArrayCollection();
         $this->shapes = new ArrayCollection();
         $this->sizes = new ArrayCollection();
         $this->colors = new ArrayCollection();
@@ -154,26 +152,12 @@ class Product {
         return $this;
     }
 
-    public function getMaterials() {
-        return $this->materials;
+    public function getMaterial() {
+        return $this->material;
     }
 
-    public function setMaterials($materials) {
-        $this->materials = $materials;
-        return $this;
-    }
-
-    public function addMaterial(Material $material) {
-        if(!$this->materials->contains($material)) {
-            $this->materials[] = $material;
-        }
-        return $this;
-    }
-
-    public function removeMaterial(Material $material) {
-        if($this->materials->contains($material)) {
-            $this->materials->removeElement($material);
-        }
+    public function setMaterial($material) {
+        $this->material = $material;
         return $this;
     }
 

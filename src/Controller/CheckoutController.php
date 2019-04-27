@@ -69,7 +69,7 @@ class CheckoutController extends Controller
         }
 
         $state = $this->getDoctrine()->getManager()->getRepository(OrderState::class)->findOneBy(array(
-            'name' => 'PROCESSING'
+            'name' => 'Pending'
         ));
 
         $order->setUser($user);

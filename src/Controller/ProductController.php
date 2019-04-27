@@ -30,9 +30,10 @@ class ProductController extends Controller
         {
             $qb->orderBy('p.price', 'ASC');
         }
-        if($request->request->get('material') && $request->request->get('material') !== 'All')
+        if($request->request->get('material') && $request->request->get('material'))
         {
-            $qb->join('p.materials', 'm')->where('m.id = :material')->setParameter('material', $request->request->get('material'));
+            //$qb->join('p.materials', 'm')->where('m.id = :material')->setParameter('material', $request->request->get('material'));
+            $qb->andWhere('p.material = :material')->setParameter('material', $request->get('material'));
         }
         if($request->request->get('shape') && $request->request->get('shape') !== 'All')
         {

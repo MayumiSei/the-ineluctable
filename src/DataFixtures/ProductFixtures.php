@@ -33,7 +33,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
         $product1->setCollection($this->getReference('collection1'));
         $product1->addSize($this->getReference('size1'));
         $product1->addShape($this->getReference('shape1'));
-        $product1->addMaterial($this->getReference('material1'));
+        $product1->setMaterial($this->getReference('material1'));
 
         $gallery1 = $this->createGallery('crescent');
 
@@ -66,7 +66,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
         $product2->setCollection($this->getReference('collection1'));
         $product2->addSize($this->getReference('size2'));
         $product2->addShape($this->getReference('shape2'));
-        $product2->addMaterial($this->getReference('material2'));
+        $product2->setMaterial($this->getReference('material2'));
 
         $gallery2 = $this->createGallery('pulsar');
 
@@ -93,7 +93,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface, Cont
         $product3->setCollection($this->getReference('collection1'));
         $product3->addSize($this->getReference('size3'));
         $product3->addShape($this->getReference('shape3'));
-        $product3->addMaterial($this->getReference('material3'));
+        $product3->setMaterial($this->getReference('material3'));
 
         $gallery3 = $this->createGallery('Moon-phase');
 
